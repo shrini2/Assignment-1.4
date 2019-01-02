@@ -1,0 +1,66 @@
+# Load the package required to read JSON files.
+library("rjson")
+
+# Give the input file name to the function.
+result <-fromJSON(file ="input.json")
+
+# Print the result.
+print(result)
+When we execute the above code, it produces the following result -
+$ID
+[1] "1"   "2"   "3"   "4"   "5"   "6"   "7"   "8"
+
+$Name
+[1] "Rick"     "Dan"      "Michelle" "Ryan"     "Gary"     "Nina"     "Simon"    "Guru"
+
+$Salary
+[1] "623.3"  "515.2"  "611"    "729"    "843.25" "578"    "632.8"  "722.5"
+
+$StartDate
+[1] "1/1/2012"   "9/23/2013"  "11/15/2014" "5/11/2014"  "3/27/2015"  "5/21/2013"
+   "7/30/2013"  "6/17/2014"
+
+$Dept
+[1] "IT"         "Operations" "IT"         "HR"         "Finance"    "IT"
+   "Operations" "Finance"
+Convert JSON to a Data Frame
+We can convert the extracted data above to a R data frame for further analysis using the as.data.frame() function.
+# Load the package required to read JSON files.
+library("rjson")
+
+# Give the input file name to the function.
+result <-fromJSON(file ="input.json")
+
+# Convert JSON file to a data frame.
+json_data_frame<-as.data.frame(result)
+
+print(json_data_frame)
+
+
+
+2. Parse the following JSON into a data frame.
+js<-'{
+"name": null, "release_date_local": null, "title": "3 (2011)",
+"opening_weekend_take": 1234, "year": 2011,
+"release_date_wide": "2011-09-16", "gross": 59954
+}
+
+js <- fromJSON(js)
+js <- lapply(js, function(x) {
+  x[sapply(x, is.null)] <- NA
+  unlist(x)
+})
+do.call("rbind",js)
+
+
+3. Write a script for Variable Binning using R.
+
+
+v<- seq (1:100)
+print (v)
+tapply(v,cut(v,50))
+
+
+
+
+
